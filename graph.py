@@ -23,16 +23,19 @@ def graph_data(voltage, power, current):
     zero = current.index(0) * 0.1
 
     plot.figure(figsize = (10, 8))
-    plot.plot(voltage, power)
-    plot.plot(voltage, current)
+    plot.plot(voltage, power, label = "Power (W)")
+    plot.plot(voltage, current, label = "Current (A)")
 
     plot.grid(True, alpha = 0.3, linestyle = ':')
-    plot.ylim(0, max_pow)
+    plot.ylim(0, max_pow + 0.5)
     plot.xlim(0, zero)
 
-    plot.show()
+    plot.title("Power & Current Over Voltage")
+    plot.xlabel("Voltage (V)")
+    plot.legend()
 
     return max_pow, max_volt, max_curr
 
 volt, powr, curr = create_example_graphs()
 print(graph_data(volt, powr, curr))
+plot.show()
